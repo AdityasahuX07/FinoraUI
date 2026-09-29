@@ -20,16 +20,16 @@
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="screenshots/screenshot_1.png" width="98.5%" alt="Hero Screenshot"/>
+  <img src="screenshots/screenshot_final_1.png" width="98.5%" alt="Hero Screenshot"/>
   <br/>
-  <img src="screenshots/screenshot_2.png" width="49%" alt="Screenshot 2"/>
-  <img src="screenshots/screenshot_3.png" width="49%" alt="Screenshot 3"/>
+  <img src="screenshots/screenshot_final_2.png" width="49%" alt="Screenshot 2"/>
+  <img src="screenshots/screenshot_final_3.png" width="49%" alt="Screenshot 3"/>
   <br/>
-  <img src="screenshots/screenshot_4.png" width="49%" alt="Screenshot 4"/>
-  <img src="screenshots/screenshot_5.png" width="49%" alt="Screenshot 5"/>
+  <img src="screenshots/screenshot_final_4.png" width="49%" alt="Screenshot 4"/>
+  <img src="screenshots/screenshot_final_5.png" width="49%" alt="Screenshot 5"/>
   <br/>
-  <img src="screenshots/screenshot_6.png" width="49%" alt="Screenshot 6"/>
-  <img src="screenshots/screenshot_7.png" width="49%" alt="Screenshot 7"/>
+  <img src="screenshots/screenshot_final_6.png" width="49%" alt="Screenshot 6"/>
+  <img src="screenshots/screenshot_final_7.png" width="49%" alt="Screenshot 7"/>
 </p>
 
 ---
