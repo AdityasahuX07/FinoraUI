@@ -20,16 +20,16 @@
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="screenshots/Screenshot%202026-09-29%20193628.png" width="49%" alt="Screenshot 1"/>
+  <img src="screenshots/Screenshot%202026-09-29%20193628.png" width="98%" alt="Hero Screenshot"/>
+  <br/><br/>
   <img src="screenshots/Screenshot%202026-09-29%20193446.png" width="49%" alt="Screenshot 2"/>
-  <br/>
   <img src="screenshots/Screenshot%202026-09-29%20193501.png" width="49%" alt="Screenshot 3"/>
+  <br/>
   <img src="screenshots/Screenshot%202026-09-29%20193533.png" width="49%" alt="Screenshot 4"/>
-  <br/>
   <img src="screenshots/Screenshot%202026-09-29%20193837.png" width="49%" alt="Screenshot 5"/>
-  <img src="screenshots/new_screenshot_1.png" width="49%" alt="Screenshot 6"/>
   <br/>
-  <img src="screenshots/new_screenshot_2.png" width="98%" alt="Screenshot 7"/>
+  <img src="screenshots/new_screenshot_1.png" width="49%" alt="Screenshot 6"/>
+  <img src="screenshots/new_screenshot_2.png" width="49%" alt="Screenshot 7"/>
 </p>
 
 ---
