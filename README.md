@@ -1,6 +1,7 @@
 <div align="center">
   <h1>FinoraUI for Jellyfin</h1>
   <p>A sleek, modern, and highly customizable UI plugin that transforms your Jellyfin media server experience.</p>
+  <img src="assets/banner.jpg" alt="FinoraUI Banner" width="800"/>
 </div>
 
 ---
