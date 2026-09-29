@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><title>FinoraUI</title></head>
+<body>
+    <div id="configPage" data-role="page" class="page type-interior pluginPage" data-require="emby-input,emby-button,emby-checkbox,emby-select">
+        <div data-role="content">
+            <div class="content-primary">
+                <form id="configForm" style="max-width:60em;">
+                    <div class="verticalSection">
+                        <h2>FinoraUI</h2>
+                        <p>Restyles Jellyfin Web with a dark, cinematic look. The color/layout changes are applied through the server's built-in <strong>Branding &gt; Custom CSS</strong> setting.</p>
+                    </div>
+
+                    <div class="checkboxContainer checkboxContainer-withDescription">
+                        <label>
+                            <input id="EnableCss" type="checkbox" is="emby-checkbox" />
+                            <span>Enable FinoraUI-style CSS skin</span>
+                        </label>
+                        <div class="fieldDescription checkboxFieldDescription">Writes the skin's stylesheet into Branding &gt; Custom CSS.</div>
+                    </div>
+
+                    <div class="checkboxContainer checkboxContainer-withDescription">
+                        <label>
+                            <input id="CenterNavigation" type="checkbox" is="emby-checkbox" />
+                            <span>Center the top navigation into a floating pill</span>
+                        </label>
+                    </div>
+
+                    <div class="inputContainer" style="display: none;">
+                        <input id="AccentColor" type="text" is="emby-input" label="Accent color (any CSS color)" />
+                        <div class="fieldDescription">Used for focus rings, the active nav pill, and progress bars. Example: #ffffff</div>
+                    </div>
+
+                    <div class="checkboxContainer checkboxContainer-withDescription">
+                        <label>
+                            <input id="EnableHoverPreviewScript" type="checkbox" is="emby-checkbox" />
+                            <span>Enable home hero banner + rail card expand-in-place</span>
+                        </label>
+                        <div class="fieldDescription checkboxFieldDescription">Adds the FinoraUI home hero/rail behaviour to Jellyfin Web.</div>
+                    </div>
+
+                    <div class="verticalSection">
+                        <h2>Ratings (MDBList)</h2>
+                        <p>Optional. Adds rating badges to the meta info row on the home hero and detail screen, looked up through
+                            <a is="emby-linkbutton" class="button-link" href="https://mdblist.com/preferences/" target="_blank" rel="noopener">MDBList's API</a>,
+                            which aggregates IMDb, TMDB, Rotten Tomatoes, Metacritic, Trakt, Letterboxd and Roger Ebert in one lookup.
+                        </p>
+                    </div>
+
+                    <div class="inputContainer">
+                        <input id="MdblistApiKey" type="text" is="emby-input" label="MDBList API key" />
+                        <div class="fieldDescription">Your personal MDBList API key. Stored in this plugin's configuration.</div>
+                    </div>
+
+                    <div class="verticalSection">
+                        <p>Choose which rating sources are shown, and drag to reorder them. Only checked sources appear, in the order listed.</p>
+                    </div>
+
+                    <ul id="RatingSourceList" style="list-style:none;margin:0;padding:0;max-width:26em;">
+                    </ul>
+
+                    <div class="verticalSection">
+                        <h2>Age rating</h2>
+                        <p>Optional. Jellyfin's own age-rating field only ever stores ONE certification - whichever
+                            country your server's metadata settings are configured for. Adding a
+                            <a is="emby-linkbutton" class="button-link" href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener">TMDB API key</a>
+                            lets the meta info row's age badge prefer the default country's certification instead,
+                            falling back to the fallback country only when a title has no certification for the
+                            default country. Left empty, the badge keeps using Jellyfin's own OfficialRating value,
+                            same as always.
+                        </p>
+                    </div>
+
+                    <div class="inputContainer">
+                        <input id="TmdbApiKey" type="text" is="emby-input" label="TMDB API key" />
+                        <div class="fieldDescription">Your personal TMDB (v3) API key. Stored in this plugin's configuration.</div>
+                    </div>
+
+                    <div class="selectContainer">
+                        <select id="AgeRatingDefaultCountry" is="emby-select" label="Default rating country"></select>
+                        <div class="fieldDescription">Preferred certification country - used as-is, with no country prefix.</div>
+                    </div>
+
+                    <div class="selectContainer">
+                        <select id="AgeRatingFallbackCountry" is="emby-select" label="Fallback rating country"></select>
+                        <div class="fieldDescription">Used only when a title has no certification for the default country above - shown prefixed with its country code.</div>
+                    </div>
+
+                    <div class="verticalSection">
+                        <h2>Video player buttons</h2>
+                        <p>Choose which buttons appear in the video player controls.</p>
+                        <p><strong>Restart required:</strong> restart the Jellyfin server after saving for these changes to take effect.</p>
+                    </div>
+
+                    <div class="checkboxContainer checkboxContainer-withDescription">
+                        <label>
+                            <input id="ShowPlayerSyncPlay" type="checkbox" is="emby-checkbox" />
+                            <span>Show SyncPlay</span>
+                        </label>
+                    </div>
+
+                    <div class="checkboxContainer checkboxContainer-withDescription">
+                        <label>
+                            <input id="ShowPlayerPip" type="checkbox" is="emby-checkbox" />
+                            <span>Show picture-in-picture</span>
+                        </label>
+                    </div>
+
+                    <div class="checkboxContainer checkboxContainer-withDescription">
+                        <label>
+                            <input id="ShowPlayerFullscreen" type="checkbox" is="emby-checkbox" />
+                            <span>Show fullscreen</span>
+                        </label>
+                    </div>
+
+                    <div class="checkboxContainer checkboxContainer-withDescription">
+                        <label>
+                            <input id="ShowPlayerChapterButtons" type="checkbox" is="emby-checkbox" />
+                            <span>Show next &amp; previous chapter</span>
+                        </label>
+                    </div>
+
+                    <div class="checkboxContainer checkboxContainer-withDescription">
+                        <label>
+                            <input id="ShowPlayerSeekButtons" type="checkbox" is="emby-checkbox" />
+                            <span>Show seek forward &amp; backward</span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <button is="emby-button" type="submit" class="raised button-submit block emby-button">
+                            <span>Save</span>
+                        </button>
+                    </div>
+
+                    <div class="fieldDescription" style="text-align:center;margin-top:1em;opacity:.6;">
+                        FinoraUI v0.0.2.1 &middot; Developed by Aditya
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var plugin = { guid: 'b7f5f3a2-2f0a-4b7a-9d0e-6a1d5c9e2f10' };
+
+            /* Friendly label + default enabled state for every rating
+               source the server (Api/FinoraUIController.cs KnownRatingSources)
+               knows how to format. Used only to render/parse the reorderable
+               list below - the actual saved value is a plain
+               "sourceId:0|1,sourceId:0|1,..." string (RatingSourcesOrder). */
+            var RATING_SOURCE_LABELS = {
+                imdb: 'IMDb',
+                tmdb: 'TMDB',
+                tomatoes: 'Rotten Tomatoes (Critics)',
+                tomatoesaudience: 'Rotten Tomatoes (Audience)',
+                metacritic: 'Metacritic (Critics)',
+                metacriticuser: 'Metacritic (Users)',
+                trakt: 'Trakt',
+                letterboxd: 'Letterboxd',
+                rogerebert: 'Roger Ebert'
+            };
+            var DEFAULT_RATING_SOURCE_ORDER =
+                'imdb:1,tmdb:1,tomatoes:1,tomatoesaudience:0,metacritic:0,metacriticuser:0,trakt:0,letterboxd:0,rogerebert:0';
+
+            /* ISO 3166-1 country codes/names, for the age-rating default/
+               fallback country dropdowns. TMDB's release_dates/content_ratings
+               endpoints key certifications by these codes. */
+            var COUNTRY_LIST = [
+                ['AF', 'Afghanistan'], ['AL', 'Albania'], ['DZ', 'Algeria'], ['AD', 'Andorra'], ['AO', 'Angola'],
+                ['AR', 'Argentina'], ['AM', 'Armenia'], ['AU', 'Australia'], ['AT', 'Austria'], ['AZ', 'Azerbaijan'],
+                ['BS', 'Bahamas'], ['BH', 'Bahrain'], ['BD', 'Bangladesh'], ['BY', 'Belarus'], ['BE', 'Belgium'],
+                ['BZ', 'Belize'], ['BJ', 'Benin'], ['BT', 'Bhutan'], ['BO', 'Bolivia'], ['BA', 'Bosnia and Herzegovina'],
+                ['BW', 'Botswana'], ['BR', 'Brazil'], ['BN', 'Brunei'], ['BG', 'Bulgaria'], ['BF', 'Burkina Faso'],
+                ['KH', 'Cambodia'], ['CM', 'Cameroon'], ['CA', 'Canada'], ['CL', 'Chile'], ['CN', 'China'],
+                ['CO', 'Colombia'], ['CR', 'Costa Rica'], ['HR', 'Croatia'], ['CU', 'Cuba'], ['CY', 'Cyprus'],
+                ['CZ', 'Czechia'], ['DK', 'Denmark'], ['DO', 'Dominican Republic'], ['EC', 'Ecuador'], ['EG', 'Egypt'],
+                ['SV', 'El Salvador'], ['EE', 'Estonia'], ['ET', 'Ethiopia'], ['FI', 'Finland'], ['FR', 'France'],
+                ['GE', 'Georgia'], ['DE', 'Germany'], ['GH', 'Ghana'], ['GR', 'Greece'], ['GT', 'Guatemala'],
+                ['HK', 'Hong Kong'], ['HU', 'Hungary'], ['IS', 'Iceland'], ['IN', 'India'], ['ID', 'Indonesia'],
+                ['IR', 'Iran'], ['IQ', 'Iraq'], ['IE', 'Ireland'], ['IL', 'Israel'], ['IT', 'Italy'],
+                ['JM', 'Jamaica'], ['JP', 'Japan'], ['JO', 'Jordan'], ['KZ', 'Kazakhstan'], ['KE', 'Kenya'],
+                ['KR', 'South Korea'], ['KW', 'Kuwait'], ['LV', 'Latvia'], ['LB', 'Lebanon'], ['LY', 'Libya'],
+                ['LI', 'Liechtenstein'], ['LT', 'Lithuania'], ['LU', 'Luxembourg'], ['MO', 'Macao'], ['MY', 'Malaysia'],
+                ['MT', 'Malta'], ['MX', 'Mexico'], ['MD', 'Moldova'], ['MC', 'Monaco'], ['MN', 'Mongolia'],
+                ['ME', 'Montenegro'], ['MA', 'Morocco'], ['MM', 'Myanmar'], ['NP', 'Nepal'], ['NL', 'Netherlands'],
+                ['NZ', 'New Zealand'], ['NI', 'Nicaragua'], ['NG', 'Nigeria'], ['NO', 'Norway'], ['OM', 'Oman'],
+                ['PK', 'Pakistan'], ['PA', 'Panama'], ['PY', 'Paraguay'], ['PE', 'Peru'], ['PH', 'Philippines'],
+                ['PL', 'Poland'], ['PT', 'Portugal'], ['PR', 'Puerto Rico'], ['QA', 'Qatar'], ['RO', 'Romania'],
+                ['RU', 'Russia'], ['SA', 'Saudi Arabia'], ['RS', 'Serbia'], ['SG', 'Singapore'], ['SK', 'Slovakia'],
+                ['SI', 'Slovenia'], ['ZA', 'South Africa'], ['ES', 'Spain'], ['LK', 'Sri Lanka'], ['SE', 'Sweden'],
+                ['CH', 'Switzerland'], ['TW', 'Taiwan'], ['TZ', 'Tanzania'], ['TH', 'Thailand'], ['TN', 'Tunisia'],
+                ['TR', 'Turkey'], ['UA', 'Ukraine'], ['AE', 'United Arab Emirates'], ['GB', 'United Kingdom'],
+                ['US', 'United States'], ['UY', 'Uruguay'], ['VE', 'Venezuela'], ['VN', 'Vietnam'], ['YE', 'Yemen'],
+                ['ZM', 'Zambia'], ['ZW', 'Zimbabwe']
+            ];
+
+            function populateCountrySelect(selectEl, list) {
+                var previousValue = selectEl.value;
+                selectEl.innerHTML = '';
+                (list || COUNTRY_LIST).forEach(function (entry) {
+                    var option = document.createElement('option');
+                    option.value = entry[0];
+                    option.textContent = entry[1] + ' (' + entry[0] + ')';
+                    selectEl.appendChild(option);
+                });
+                if (previousValue) {
+                    selectEl.value = previousValue;
+                }
+            }
+
+            /* Live TMDB country list: fetched in the background (once per
+               API key) and swapped in once it arrives. This intentionally
+               does NOT hook into the select's click/mousedown - emby-select
+               renders its own dropdown UI on click, and intercepting that
+               event (or disabling the element) stops it from opening at
+               all. Falls back to COUNTRY_LIST above if no key is set yet or
+               the request fails. */
+            var tmdbCountriesPromise = null;
+
+            function getTmdbCountries() {
+                var apiKey = (document.querySelector('#TmdbApiKey').value || '').trim();
+                if (!apiKey) {
+                    return Promise.resolve(null);
+                }
+                if (!tmdbCountriesPromise) {
+                    tmdbCountriesPromise = fetch('https://api.themoviedb.org/3/configuration/countries?api_key=' + encodeURIComponent(apiKey))
+                        .then(function (response) {
+                            if (!response.ok) {
+                                throw new Error('TMDB request failed: ' + response.status);
+                            }
+                            return response.json();
+                        })
+                        .then(function (data) {
+                            return data
+                                .map(function (c) { return [c.iso_3166_1, c.english_name || c.native_name || c.iso_3166_1]; })
+                                .sort(function (a, b) { return a[1].localeCompare(b[1]); });
+                        })
+                        .catch(function (error) {
+                            console.error('FinoraUI: failed to fetch TMDB country list, falling back to built-in list', error);
+                            tmdbCountriesPromise = null;
+                            return null;
+                        });
+                }
+                return tmdbCountriesPromise;
+            }
+
+            function refreshCountrySelectsFromTmdb() {
+                getTmdbCountries().then(function (list) {
+                    if (!list) {
+                        return;
+                    }
+                    populateCountrySelect(document.querySelector('#AgeRatingDefaultCountry'), list);
+                    populateCountrySelect(document.querySelector('#AgeRatingFallbackCountry'), list);
+                });
+            }
+
+            function parseRatingSourceOrder(order) {
+                var parsed = [];
+                var seen = {};
+                (order || '').split(',').forEach(function (entry) {
+                    var parts = entry.trim().split(':');
+                    if (parts.length !== 2 || !RATING_SOURCE_LABELS.hasOwnProperty(parts[0])) {
+                        return;
+                    }
+                    parsed.push({ id: parts[0], enabled: parts[1] === '1' });
+                    seen[parts[0]] = true;
+                });
+                /* Any source the server knows about that wasn't in the saved
+                   string (e.g. this is the first save, or a new source was
+                   added in an update) still shows up, disabled by default. */
+                Object.keys(RATING_SOURCE_LABELS).forEach(function (id) {
+                    if (!seen[id]) {
+                        parsed.push({ id: id, enabled: false });
+                    }
+                });
+                return parsed;
+            }
+
+            function renderRatingSourceList(entries) {
+                var list = document.querySelector('#RatingSourceList');
+                list.innerHTML = '';
+                var draggingEl = null;
+                entries.forEach(function (entry) {
+                    var li = document.createElement('li');
+                    li.draggable = true;
+                    li.dataset.sourceId = entry.id;
+                    li.style.cssText = 'display:flex;align-items:center;gap:.6em;padding:.5em .3em;border-bottom:1px solid rgba(255,255,255,.1);cursor:move;';
+
+                    var handle = document.createElement('span');
+                    handle.textContent = '\u2630';
+                    handle.style.opacity = '.5';
+                    li.appendChild(handle);
+
+                    var label = document.createElement('label');
+                    label.style.cssText = 'display:flex;align-items:center;gap:.5em;flex:1;';
+                    label.innerHTML = '<input type="checkbox" is="emby-checkbox" data-source-checkbox="1" ' + (entry.enabled ? 'checked ' : '') + '/><span>' + (RATING_SOURCE_LABELS[entry.id] || entry.id) + '</span>';
+
+                    li.appendChild(label);
+
+                    li.addEventListener('dragstart', function () {
+                        li.style.opacity = '.4';
+                        draggingEl = li;
+                    });
+                    li.addEventListener('dragend', function () {
+                        li.style.opacity = '';
+                        draggingEl = null;
+                    });
+                    li.addEventListener('dragover', function (event) {
+                        event.preventDefault();
+                        if (!draggingEl || draggingEl === li) { return; }
+                        var rect = li.getBoundingClientRect();
+                        var before = (event.clientY - rect.top) < rect.height / 2;
+                        list.insertBefore(draggingEl, before ? li : li.nextSibling);
+                    });
+
+                    list.appendChild(li);
+                });
+            }
+
+            function readRatingSourceOrder() {
+                var list = document.querySelector('#RatingSourceList');
+                return Array.prototype.map.call(list.querySelectorAll('li'), function (li) {
+                    var checkbox = li.querySelector('input[type="checkbox"]');
+                    return li.dataset.sourceId + ':' + (checkbox.checked ? '1' : '0');
+                }).join(',');
+            }
+
+            document.querySelector('#configPage').addEventListener('pageshow', function () {
+                Dashboard.showLoadingMsg();
+                populateCountrySelect(document.querySelector('#AgeRatingDefaultCountry'));
+                populateCountrySelect(document.querySelector('#AgeRatingFallbackCountry'));
+                ApiClient.getPluginConfiguration(plugin.guid).then(function (config) {
+                    document.querySelector('#EnableCss').checked = !!config.EnableCss;
+                    document.querySelector('#CenterNavigation').checked = !!config.CenterNavigation;
+                    document.querySelector('#AccentColor').value = config.AccentColor || '#ffffff';
+                    document.querySelector('#EnableHoverPreviewScript').checked = !!config.EnableHoverPreviewScript;
+                    document.querySelector('#MdblistApiKey').value = config.MdblistApiKey || '';
+                    renderRatingSourceList(parseRatingSourceOrder(config.RatingSourcesOrder || DEFAULT_RATING_SOURCE_ORDER));
+                    document.querySelector('#TmdbApiKey').value = config.TmdbApiKey || '';
+                    document.querySelector('#AgeRatingDefaultCountry').value = config.AgeRatingDefaultCountry || 'US';
+                    document.querySelector('#AgeRatingFallbackCountry').value = config.AgeRatingFallbackCountry || 'IN';
+                    tmdbCountriesPromise = null;
+                    refreshCountrySelectsFromTmdb();
+                    document.querySelector('#ShowPlayerSyncPlay').checked = !!config.ShowPlayerSyncPlay;
+                    document.querySelector('#ShowPlayerPip').checked = !!config.ShowPlayerPip;
+                    document.querySelector('#ShowPlayerFullscreen').checked = !!config.ShowPlayerFullscreen;
+                    document.querySelector('#ShowPlayerChapterButtons').checked = !!config.ShowPlayerChapterButtons;
+                    document.querySelector('#ShowPlayerSeekButtons').checked = !!config.ShowPlayerSeekButtons;
+                    Dashboard.hideLoadingMsg();
+                }).catch(function (error) {
+                    Dashboard.hideLoadingMsg();
+                    console.error('FinoraUI: failed to load plugin configuration', error);
+                });
+            });
+
+            document.querySelector('#TmdbApiKey').addEventListener('change', function () {
+                tmdbCountriesPromise = null;
+                refreshCountrySelectsFromTmdb();
+            });
+
+            document.querySelector('#configForm').addEventListener('submit', function (event) {
+                Dashboard.showLoadingMsg();
+
+                ApiClient.getPluginConfiguration(plugin.guid).then(function (config) {
+                    config.EnableCss = document.querySelector('#EnableCss').checked;
+                    config.CenterNavigation = document.querySelector('#CenterNavigation').checked;
+                    config.AccentColor = document.querySelector('#AccentColor').value || '#ffffff';
+                    config.EnableHoverPreviewScript = document.querySelector('#EnableHoverPreviewScript').checked;
+                    config.MdblistApiKey = document.querySelector('#MdblistApiKey').value || '';
+                    config.RatingSourcesOrder = readRatingSourceOrder();
+                    config.TmdbApiKey = document.querySelector('#TmdbApiKey').value || '';
+                    config.AgeRatingDefaultCountry = document.querySelector('#AgeRatingDefaultCountry').value || 'US';
+                    config.AgeRatingFallbackCountry = document.querySelector('#AgeRatingFallbackCountry').value || 'IN';
+                    config.ShowPlayerSyncPlay = document.querySelector('#ShowPlayerSyncPlay').checked;
+                    config.ShowPlayerPip = document.querySelector('#ShowPlayerPip').checked;
+                    config.ShowPlayerFullscreen = document.querySelector('#ShowPlayerFullscreen').checked;
+                    config.ShowPlayerChapterButtons = document.querySelector('#ShowPlayerChapterButtons').checked;
+                    config.ShowPlayerSeekButtons = document.querySelector('#ShowPlayerSeekButtons').checked;
+
+                    return ApiClient.updatePluginConfiguration(plugin.guid, config);
+                }).then(function (result) {
+                    Dashboard.processPluginConfigurationUpdateResult(result);
+                }).catch(function (error) {
+                    Dashboard.hideLoadingMsg();
+                    console.error('FinoraUI: failed to save plugin configuration', error);
+                });
+
+                event.preventDefault();
+                return false;
+            });
+        </script>
+    </div>
+</body>
+</html>

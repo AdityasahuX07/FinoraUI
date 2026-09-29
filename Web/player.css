@@ -1,0 +1,497 @@
+:root {
+    --abyss-accent: 245, 245, 247;
+    --abyss-accent-channel: 245 245 247;
+    --abyss-radius: 12px;
+    --abyss-glass-tint: 42, 42, 42;
+    --abyss-backdrop-blur: 23px;
+    --abyss-glass-blur: 15px;
+}
+
+/* 8. MEDIA PLAYER */
+
+.nowPlayingPageImage {
+    border: none;
+}
+
+.osdPoster img {
+    border-radius: var(--abyss-radius);
+    border: none;
+}
+
+.startTimeText,
+.endTimeText {
+    width: 3.4em;
+    display: block;
+    text-align: center;
+}
+
+.osdTitle {
+    margin-left: 0.5em;
+}
+
+.skinHeader.osdHeader {
+    height: 5em;
+}
+
+.osdTextContainer {
+    margin: 0 !important;
+    margin-top: 0.2em !important;
+    padding-left: 0.5em !important;
+    padding-right: 0.5em !important;
+}
+
+.nowPlayingBarCurrentTime {
+    width: 6em;
+}
+
+.upNextDialog-countdownText {
+    color: rgb(var(--abyss-accent));
+}
+
+.iconOsdProgressInner {
+    background: rgb(var(--abyss-accent));
+}
+
+/* Chapter thumb */
+.chapterThumb {
+    height: 14vh;
+    min-width: 14vh;
+    box-shadow: 0 0 1.9vh #000;
+}
+
+.chapterThumbText {
+    font-size: 1em;
+}
+
+.chapterThumbTextContainer {
+    right: auto;
+    bottom: 4px;
+    padding: .25em 0.7em;
+}
+
+.chapterThumbContainer {
+    box-shadow: 0 0 1.9vh #000;
+}
+
+.sliderBubble {
+    background: #0000;
+    -webkit-transform: translate3d(-50%, -108%, 0);
+    transform: translate3d(-50%, -108%, 0);
+}
+
+/* Playing Bar */
+.nowPlayingBarTop {
+    margin-top: 24px;
+}
+
+.videoOsdBottom .osdControls,
+.nowPlayingBar {
+    border-radius: 24px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+}
+
+.nowPlayingBar .nowPlayingImage {
+    width: 2.91em;
+    border-radius: 8px;
+}
+
+.nowPlayingBarPositionContainer {
+    top: -1.5em;
+    padding: 0 8px;
+}
+
+.nowPlayingBarInfoContainer {
+    margin-left: 8px;
+}
+
+body:has(#videoOsdPage) .skinHeader .MuiTypography-root.MuiTypography-body1 {
+    font-size: large;
+    font-weight: 500;
+    -webkit-backdrop-filter: blur(var(--abyss-glass-blur));
+    backdrop-filter: blur(var(--abyss-glass-blur));
+    padding: 4px 12px;
+    border-radius: 12px;
+}
+
+.videoOsdBottom {
+    padding: 0 !important;
+    margin: 24px !important;
+    border-radius: 24px;
+    background: none !important;
+}
+
+.osdTimeText {
+    margin-left: 0 !important;
+    opacity: 0.5;
+}
+
+/* Track selector */
+.trackSelections .selectContainer .detailTrackSelect {
+    padding: .5em 1.9em .5em .5em;
+}
+
+.trackSelections .selectContainer .selectArrowContainer .selectArrow {
+    margin-top: .2em;
+}
+
+.trackSelections .selectContainer {
+    align-items: center;
+}
+
+/* Slider track rounding */
+.mdl-slider-background-flex,
+.mdl-slider-background-flex-inner,
+.mdl-slider-background-upper,
+.mdl-slider-background-lower {
+    border-radius: 2px;
+}
+
+
+/* Backdrop filter support */
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+
+    html[data-theme="dark"] .MuiDialog-paper,
+    .manualLoginForm,
+    .dialog,
+    .iconOsd,
+    .mainDrawer,
+    .toast,
+    .emby-tabs-slider,
+    .videoOsdBottom .osdControls,
+    .readOnlyContent .verticalSection,
+    .button-submit,
+    .upNextContainer,
+    .selectionCommandsPanel,
+    .playerStats-stats,
+    .appfooter,
+    html[data-theme="dark"] #displayPreferencesPage form button[type="submit"].MuiButton-root {
+        -webkit-backdrop-filter: blur(var(--abyss-glass-blur)) !important;
+        backdrop-filter: blur(var(--abyss-glass-blur)) !important;
+        background-color: rgba(var(--abyss-glass-tint), 0.69) !important;
+    }
+
+    .raised.cancel.block.btnForgotPassword.emby-button,
+    .btnQuick,
+    .pageTitle,
+    .videoOsdBottom,
+    .headerButton {
+        -webkit-backdrop-filter: blur(var(--abyss-glass-blur)) !important;
+        backdrop-filter: blur(var(--abyss-glass-blur)) !important;
+    }
+
+    .paper-icon-button-light:hover,
+    #itemDetailPage .itemProgressBar,
+    #dashboardPage .backgroundProgress>div {
+        backdrop-filter: blur(4px);
+    }
+
+    .indicator {
+        backdrop-filter: blur(2px);
+    }
+
+    @media all and (max-width: 75em) {
+        .cardOverlayButtonIcon {
+            background-color: rgba(0, 0, 0, 0.35) !important;
+            backdrop-filter: blur(4px);
+        }
+    }
+
+    #indexPage .itemProgressBar,
+    .libraryPage .itemProgressBar,
+    #itemDetailPage .itemProgressBar {
+        backdrop-filter: blur(4px);
+        background: rgba(0, 0, 0, 0.35) !important;
+    }
+
+    body:has(.nowPlayingBar:not(.hide)) .backgroundContainer.withBackdrop {
+        -webkit-backdrop-filter: blur(var(--abyss-glass-blur));
+        backdrop-filter: blur(var(--abyss-glass-blur));
+    }
+}
+
+
+/* Player buttons (SyncPlay, PiP, fullscreen, chapters, seek) are shown/hidden from the plugin
+   settings - see BuildPlayerOptionsCss in SkinEntryPoint.cs. Always hidden: */
+.videoOsdBottom .btnUserRating {
+    display: none !important;
+}
+
+
+
+
+
+
+
+/* Player settings action sheet: never clip labels (Quality, Playback Speed, Repeat Mode) */
+body:has(#videoOsdPage) .actionSheet .actionSheetScroller {
+    min-width: max-content;
+}
+
+body:has(#videoOsdPage) .actionSheet .actionsheetListItemBody {
+    flex-shrink: 0 !important;
+    min-width: max-content !important;
+}
+
+body:has(#videoOsdPage) .actionSheet .actionSheetItemText {
+    overflow: visible !important;
+    text-overflow: clip !important;
+}
+
+body:has(#videoOsdPage) .actionSheet .actionSheetItemAsideText {
+    margin-left: 1.5em !important;
+    margin-right: 0.5em !important;
+}
+
+/* Player settings action sheet: keep a constant font weight on hover/focus.
+   main.css makes .actionSheetMenuItem:hover bold (700). The sheet is sized with
+   width: max-content, so the bolder "Auto 40 Mbps" value on the Quality row made
+   the whole container grow while hovering. Same weight in every state = no resize. */
+body:has(#videoOsdPage) .actionSheet .actionSheetMenuItem,
+body:has(#videoOsdPage) .actionSheet .actionSheetMenuItem:hover,
+body:has(#videoOsdPage) .actionSheet .actionSheetMenuItem:focus,
+body:has(#videoOsdPage) .actionSheet .actionSheetMenuItem:focus-visible,
+body:has(#videoOsdPage) .actionSheet .actionSheetMenuItem:active,
+body:has(#videoOsdPage) .actionSheet .actionSheetMenuItem .actionSheetItemText,
+body:has(#videoOsdPage) .actionSheet .actionSheetMenuItem .actionSheetItemAsideText {
+    font-weight: 400 !important;
+}
+
+
+/* Seek-bar hover preview: rounded container, frame thumbnail + chapter + time */
+body:has(#videoOsdPage) .osdControls .sliderBubble {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+body:has(#videoOsdPage) .osdControls .sliderBubble:has(.chapterThumbContainer) {
+    background: transparent !important;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+}
+
+body:has(#videoOsdPage) .chapterThumbContainer {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden !important;
+    background: #111;
+    box-shadow: none;
+}
+
+body:has(#videoOsdPage) .chapterThumbContainer .chapterThumb,
+body:has(#videoOsdPage) .chapterThumbContainer .chapterThumbWrapper {
+    display: block;
+    border-radius: 16px;
+}
+
+body:has(#videoOsdPage) .chapterThumbContainer > .chapterThumbTextContainer:not(.chapterBubblePosition) {
+    left: 8px;
+    right: auto;
+    bottom: 8px;
+    padding: 0.2em 0.7em;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+body:has(#videoOsdPage) .chapterThumbContainer > .chapterThumbTextContainer.chapterBubblePosition {
+    padding: 0.5em 1em;
+}
+
+
+/* OSD bottom bar: lighter dark tint, blur unchanged (tint 0.69 -> 0.22) */
+body .videoOsdBottom .osdControls {
+    background-color: rgba(var(--abyss-glass-tint), 0.22) !important;
+}
+
+
+/* OSD progress bar: thicker track, no circular knob */
+body .osdControls .sliderContainer:not(.osdVolumeSliderContainer) .mdl-slider-background-flex-container {
+    padding: 0 !important;
+}
+
+body .osdControls .sliderContainer:not(.osdVolumeSliderContainer) .sliderMarkerContainer {
+    margin: 0 !important;
+}
+
+body .osdControls .sliderContainer:not(.osdVolumeSliderContainer) .mdl-slider-background-flex {
+    transform: scaleY(2.5);
+    transform-origin: center;
+}
+
+body .osdControls .sliderContainer:not(.osdVolumeSliderContainer) .mdl-slider-background-flex,
+body .osdControls .sliderContainer:not(.osdVolumeSliderContainer) .mdl-slider-background-flex-inner,
+body .osdControls .sliderContainer:not(.osdVolumeSliderContainer) .mdl-slider-background-upper,
+body .osdControls .sliderContainer:not(.osdVolumeSliderContainer) .mdl-slider-background-lower {
+    border-radius: 999px !important;
+}
+
+body .osdControls .osdPositionSlider::-webkit-slider-thumb {
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+body .osdControls .osdPositionSlider::-moz-range-thumb {
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+
+/* Audio/Subtitle track selector: size to the longest track name instead of clipping it */
+body:has(#videoOsdPage) .actionSheet,
+body:has(#videoOsdPage) .actionSheetContent,
+body:has(#videoOsdPage) .actionSheetScroller {
+    width: max-content !important;
+    max-width: min(90vw, 32em) !important;
+}
+
+body:has(#videoOsdPage) .actionSheetContent {
+    overflow: visible !important;
+}
+
+body:has(#videoOsdPage) .actionSheetMenuItem,
+body:has(#videoOsdPage) .actionSheetMenuItem .actionsheetListItemBody {
+    flex-shrink: 0 !important;
+    min-width: max-content !important;
+}
+
+body:has(#videoOsdPage) .actionSheetItemText {
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+}
+
+
+/* Volume slider hover/drag bubble ("31"): restore a dark chip behind the
+   white number. A shared rule (meant for the position-bar fill) was also
+   turning this bubble's own background near-white, hiding the white text. */
+body .osdVolumeSliderContainer .sliderBubble {
+    background: rgba(20, 20, 22, 0.92) !important;
+    border-radius: 8px;
+    color: #fff !important;
+}
+
+
+/* Volume/Brightness OSD: percentage label under the bar */
+.ns-iconOsd-pct {
+    margin: 0.35em 0.25em 0;
+    font-size: 0.85em;
+    text-align: center;
+    opacity: 0.85;
+}
+
+
+/* ---- OSD progress bar: chapter split ----
+ * player.js measures every chapter start on the seek bar and publishes a
+ * hard-stop gradient as --ns-chapter-mask on the position slider's
+ * .sliderContainer (and adds .ns-chapter-split). Masking Jellyfin's own
+ * .mdl-slider-background-flex cuts a real gap through the track, the
+ * buffered range and the played fill at once, so the bar is genuinely split
+ * into separate segments - not overlaid with divider lines. The gap width is
+ * tunable (px only): --ns-chapter-gap. */
+:root {
+    --ns-chapter-gap: 2px;
+}
+
+body .osdControls .sliderContainer.ns-chapter-split:not(.osdVolumeSliderContainer) .mdl-slider-background-flex {
+    -webkit-mask-image: var(--ns-chapter-mask);
+    mask-image: var(--ns-chapter-mask);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+
+/* Jellyfin's own chapter ticks (.sliderMarker) are vertical lines - the gaps
+   replace them, so they are always hidden on the OSD seek bar (not only once
+   the split is active, which avoids a brief flash of ticks on a fresh player). */
+body .osdControls .sliderContainer:not(.osdVolumeSliderContainer) .sliderMarkerContainer .sliderMarker {
+    visibility: hidden !important;
+}
+
+
+/* Video sits full-viewport and vertically centred.
+   The OSD title block makes .skinHeader.osdHeader ~120px tall (height:auto). If that header
+   is laid out in normal flow the video container is pushed below it, leaving an empty
+   page-colour band on top and the video flush to the bottom edge. Take the header out of
+   flow and pin the video container to the full viewport. */
+.skinHeader.osdHeader {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+}
+
+.videoPlayerContainer {
+    top: 0 !important;
+    bottom: 0 !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* ---- Age Rating OSD ---- */
+.ns-age-rating-osd {
+    position: fixed !important;
+    top: 32px !important;
+    left: 32px !important;
+    display: flex;
+    align-items: center;
+    z-index: 999999 !important;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: none;
+}
+.ns-age-rating-osd.show {
+    opacity: 1;
+}
+.ns-age-rating-line {
+    width: 3px;
+    height: 1.6em;
+    background: #fff;
+    z-index: 2;
+    position: relative;
+    border-radius: 2px;
+}
+.ns-age-rating-text-container {
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+}
+.ns-age-rating-text {
+    font-size: 1.6rem;
+    font-weight: 400;
+    white-space: nowrap;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    padding-left: 12px;
+}
+.ns-age-rating-osd.show .ns-age-rating-text {
+    transform: translateX(0);
+}
+
+body:has(.ns-age-rating-osd.show) .skinHeader.osdHeader {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.skinHeader.osdHeader, #ns-osd-title, .skinHeader .MuiTypography-root {
+    transition: opacity 0.3s ease;
+}
+
+/* Hide the OSD elements when playback just started and no interaction has happened */
+body.ns-mouse-idle-start .skinHeader.osdHeader,
+body.ns-mouse-idle-start .videoOsdBottom {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: none !important;
+}
