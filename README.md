@@ -26,9 +26,9 @@
   <img src="screenshots/Screenshot%202026-09-29%20193501.png" width="49%" alt="Screenshot 3"/>
   <br/>
   <img src="screenshots/Screenshot%202026-09-29%20193533.png" width="49%" alt="Screenshot 4"/>
-  <img src="screenshots/Screenshot%202026-09-29%20193837.png" width="49%" alt="Screenshot 5"/>
+  <img src="screenshots/new_screenshot_1.png" width="49%" alt="Screenshot 5"/>
   <br/>
-  <img src="screenshots/new_screenshot_1.png" width="49%" alt="Screenshot 6"/>
+  <img src="screenshots/Screenshot%202026-09-29%20193837.png" width="49%" alt="Screenshot 6"/>
   <img src="screenshots/new_screenshot_2.png" width="49%" alt="Screenshot 7"/>
 </p>
 
