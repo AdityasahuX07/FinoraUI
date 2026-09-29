@@ -21,7 +21,7 @@
 
 <p align="center">
   <img src="screenshots/Screenshot%202026-09-29%20193628.png" width="98%" alt="Hero Screenshot"/>
-  <br/><br/>
+  <br/>
   <img src="screenshots/Screenshot%202026-09-29%20193446.png" width="49%" alt="Screenshot 2"/>
   <img src="screenshots/Screenshot%202026-09-29%20193501.png" width="49%" alt="Screenshot 3"/>
   <br/>
