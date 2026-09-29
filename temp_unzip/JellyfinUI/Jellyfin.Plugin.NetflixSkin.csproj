@@ -1,0 +1,66 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Jellyfin.Plugin.NetflixSkin</AssemblyName>
+    <RootNamespace>Jellyfin.Plugin.NetflixSkin</RootNamespace>
+    <AssemblyVersion>1.0.8.0</AssemblyVersion>
+    <FileVersion>1.0.8.0</FileVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AddSyntheticProjectReferencesForSolutionDependencies>false</AddSyntheticProjectReferencesForSolutionDependencies>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <NoWarn>CA1014;CS1591</NoWarn>
+  </PropertyGroup>
+
+  <!--
+    Controllers (ControllerBase / ActionResult / [ApiController]) live in the ASP.NET Core
+    shared framework, not in a plain netstandard/net class library. Jellyfin plugins that
+    expose their own HTTP endpoints (this one serves its injected JS file) need this
+    FrameworkReference, same as the official plugins that ship API controllers
+    (e.g. Playback Reporting).
+  -->
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <!--
+    Jellyfin.Controller transitively brings in Jellyfin.Model and Jellyfin.Common,
+    which is the standard single-package reference used by the official
+    jellyfin-plugin-template. Pin the version to the Jellyfin server release you are
+    targeting (server and plugin ABI must be compatible - see README).
+
+    12.0.0 targets Jellyfin 12.0 (the .NET 10 line, released September 2026). If you
+    are still on a 10.10.x/10.11.x server, switch TargetFramework back to net8.0/net9.0
+    and this PackageReference to a matching 10.x Jellyfin.Controller version instead -
+    the two server generations are not binary compatible with each other.
+  -->
+  <ItemGroup>
+    <PackageReference Include="Jellyfin.Controller" Version="12.0.0" />
+  </ItemGroup>
+
+  <!--
+    The CSS/JS "skin" assets and the dashboard configuration page are embedded directly
+    into the plugin DLL as resources, so the finished plugin is a single self-contained
+    file with no separate assets folder to deploy alongside it.
+  -->
+  <ItemGroup>
+    <EmbeddedResource Include="Configuration\configPage.html">
+      <LogicalName>Jellyfin.Plugin.NetflixSkin.Configuration.configPage.html</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Web\main.css">
+      <LogicalName>Jellyfin.Plugin.NetflixSkin.Web.main.css</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Web\main.js">
+      <LogicalName>Jellyfin.Plugin.NetflixSkin.Web.main.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Web\player.css">
+      <LogicalName>Jellyfin.Plugin.NetflixSkin.Web.player.css</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Web\player.js">
+      <LogicalName>Jellyfin.Plugin.NetflixSkin.Web.player.js</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
