@@ -19,9 +19,19 @@
 
 ## 📸 Screenshots
 
-*(Add screenshots of your UI here to show users what it looks like!)*
-- `![Dashboard view](placeholder_dashboard.png)`
-- `![Player view](placeholder_player.png)`
+<p align="center">
+  <img src="screenshots/Screenshot%202026-09-29%20193430.png" width="49%" alt="Screenshot 1"/>
+  <img src="screenshots/Screenshot%202026-09-29%20193446.png" width="49%" alt="Screenshot 2"/>
+  <br/>
+  <img src="screenshots/Screenshot%202026-09-29%20193501.png" width="49%" alt="Screenshot 3"/>
+  <img src="screenshots/Screenshot%202026-09-29%20193533.png" width="49%" alt="Screenshot 4"/>
+  <br/>
+  <img src="screenshots/Screenshot%202026-09-29%20193604.png" width="49%" alt="Screenshot 5"/>
+  <img src="screenshots/Screenshot%202026-09-29%20193628.png" width="49%" alt="Screenshot 6"/>
+  <br/>
+  <img src="screenshots/Screenshot%202026-09-29%20193712.png" width="49%" alt="Screenshot 7"/>
+  <img src="screenshots/Screenshot%202026-09-29%20193837.png" width="49%" alt="Screenshot 8"/>
+</p>
 
 ---
 
